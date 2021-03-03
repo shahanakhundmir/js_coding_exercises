@@ -6,6 +6,18 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  // add code here
+
+  // filter multiples of 5 and 3
+  let filtered = arr.filter(function(value){
+    if ((value % 5 === 0 || value % 3 === 0) && value > 0){
+      return value;}
+  });
+  
+  const total = filtered.reduce((total, val) => {
+    return total + val }, 0)
+
+  return total;
 };
 
 /**
@@ -15,6 +27,16 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  // code here
+  const splitStr = str.split('');
+  // filter all the non valid sequences
+  let notValid = splitStr.filter(function(char){
+    if (char !== 'C' && char !== 'G' && char !== 'T' && char !== 'A'){
+      return char ;}
+  });
+  // if sequence is valid, notValid should be empty
+  return notValid.length === 0;
+
 };
 
 /**
@@ -24,6 +46,24 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  str = str.toUpperCase();
+  const strArr = str.split('');
+  //console.log(strArr);
+
+  const dnaMap = {
+    'T': 'A',
+    'A': 'T',
+    'G': 'C',
+    'C': 'G',
+  }
+
+  const newDna = strArr.map(x => {
+    return dnaMap[x]});
+  //console.log(newDnaString);
+  return  newDnaString =  newDna.reduce(function( s, char) {
+      return s += char;}, '');
+
 };
 
 /**
@@ -33,6 +73,18 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (n <2){
+    return false;
+  }
+
+  let sqrt = Math.sqrt(n);
+  
+  for (var i = 2; i <= sqrt; i++) {
+    if (n % i === 0){
+      return false;
+    } 
+  }
+  return true;
 };
 
 /**
@@ -49,6 +101,22 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  // code here
+  let matrix =[];
+  
+  if (n<1){
+    return matrix;
+  }
+
+  for (j=0; j<n; j++){
+
+    let m = [];
+    for(i=0; i<n; i++){
+      m.push(fill)
+    }
+    matrix.push(m);
+  }
+  return matrix;
 };
 
 /**
@@ -66,6 +134,18 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  //code
+  day = day.toLowerCase();
+  let count = 0;
+  for (person of staff){
+    let days = person.rota.map(function(r){ return r.toLowerCase(); })
+    //console.log(days);
+    //console.log(day);
+    if(days.includes( day)){
+      count += 1;
+    }
+  }
+  return count >= 3;
 };
 
 module.exports = {
