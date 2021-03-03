@@ -97,35 +97,27 @@ describe('createMatrix', () =>{
 
 
 describe('areWeCovered', () =>{
+    const staff = [{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+    { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
+    { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "Mike", rota: ["Saturday", "Sunday", "Friday", "Wednesday"] } ]
+
+
+    
     test('check that the day appears in the rota at least 3 times  ', () => {
-        expect(areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
-        { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
-        { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
-        { name: "Mike", rota: ["Saturday", "Sunday", "Monday", "Wednesday"] } ], 'Saturday')).toBe(true);
+        expect(areWeCovered(staff, 'Saturday')).toBe(true);
 
-        expect(areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
-        { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
-        { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
-        { name: "Mike", rota: ["Saturday", "Sunday", "Monday", "Wednesday"] } ], 'Wednesday')).toBe(true);
+        expect(areWeCovered(staff, 'Wednesday')).toBe(true);
 
-        expect(areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
-        { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
-        { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
-        { name: "Mike", rota: ["Saturday", "Sunday", "Thursday", "Wednesday"] } ], 'Monday')).toBe(false); 
+        expect(areWeCovered(staff, 'Monday')).toBe(false); 
     });
     
     test('Day does not exist', () => {
-        expect(areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
-        { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
-        { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
-        { name: "Mike", rota: ["Saturday", "Sunday", "Monday", "Wednesday"] }], 'Kent')).toBe(false);
+        expect(areWeCovered(staff, 'Kent')).toBe(false);
     });
 
     test('not case sensitive ', () => {
-        expect(areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
-        { name: "Pedro", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
-        { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
-        { name: "Mike", rota: ["Saturday", "Sunday", "Monday", "Wednesday"] } ], 'wednesday')).toBe(true);
+        expect(areWeCovered(staff, 'wednesday')).toBe(true);
     });
 
     test('duplication of day, is counted once ', () => {
