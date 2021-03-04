@@ -102,8 +102,6 @@ describe('areWeCovered', () =>{
     { name: "Alice", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
     { name: "Mike", rota: ["Saturday", "Sunday", "Friday", "Wednesday"] } ]
 
-
-    
     test('check that the day appears in the rota at least 3 times  ', () => {
         expect(areWeCovered(staff, 'Saturday')).toBe(true);
 
@@ -127,7 +125,6 @@ describe('areWeCovered', () =>{
         { name: "Mike", rota: ["Saturday", "Sunday", "Wednesday"] } ], 'monday')).toBe(false);
     });
 
-    
 });
 
 

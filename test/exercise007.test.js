@@ -179,9 +179,7 @@ const {sumDigits,
             ["0", "X", "X"]];
         
 
-        
-
-
+    
         test('winner X, test column and row', () => {
             expect(findWinner(boardOne)).toBe('X');
             expect(findWinner(boardTwo)).toBe('X');
@@ -191,17 +189,16 @@ const {sumDigits,
             expect(findWinner(boardThree)).toBe('0');
             expect(findWinner(boardFour)).toBe('0');
         });
-        
+      
         test('test diags', () => {
             expect(findWinner(boardFive)).toBe("0");
             expect(findWinner(boardSix)).toBe("X");
         });
 
-
         test('no winner', () => {
             expect(findWinner(boardSeven)).toBe(null);
             expect(findWinner(boardEight)).toBe(null);
-        });
+        }); 
     
       });
 

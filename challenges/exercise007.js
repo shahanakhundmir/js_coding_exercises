@@ -159,38 +159,33 @@ const hexToRGB = hexStr => {
  * ]
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
- */
+ */ 
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-
   // check rows
   for (row = 0; row <3; row++){
-    if ( board[row][0] === board[row][1] === board[row][2] === "X" || board[row][0] === board[row][1] === board[row][2] === "0"){
-      console.log('row');
+    if ( board[row][0] ===  "X" && board[row][1] === "X" && board[row][2] === "X" || board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0"){
       return board[row][0];
     }
   }
 
   // check columns
   for (col = 0; col <3; col++){
-  
-    if ( board[0][col] === board[1][col] === board[2][col] === "X" || board[0][col] === board[1][col] === board[2][col] === "0"){
-      console.log('col');
+    if ( board[0][col] === "X" &&  board[1][col] === "X" && board[2][col] === "X" || board[0][col] === "0" && board[1][col] === "0" && board[2][col] === "0"){
       return board[0][col];
     }
   }
 
   // check diag.
-  if ( board[0][0] === board[1][1] === board[2][2] === "X" || board[0][2] === board[1][1] === board[2][0] === "X"){
-    console.log('diag');
+  if ( board[0][0] === "X" && board[1][1] === "X" && board[2][2] === "X" || board[0][2] === "X" && board[1][1] === "X" && board[2][0] === "X"){
     return "X";
   }
-  else if (board[0][0] === board[1][1] === board[2][2] === "0" || board[0][2] === board[1][1] === board[2][0] === "0"){
-    console.log('diag');
+  else if (board[0][0] === "0" && board[1][1] === "0" && board[2][2] === "0" || board[0][2] === "0" && board[1][1] === "0" && board[2][0] === "0"){
     return "0";
   } 
   return null;
 };
+
 
 module.exports = {
   sumDigits,
