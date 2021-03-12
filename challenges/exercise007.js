@@ -6,11 +6,9 @@ const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
   if (n < 0) throw new Error("n must be above zero");
   const nArr = n.toString().split('');
- 
   let newNum =  nArr.reduce(function( total, num) {
     return total + parseInt(num);}, 0);
     return newNum;
-  
 };
 
 /**
@@ -29,8 +27,6 @@ const createRange = (start, end, step) => {
   if (step !== undefined){
     s = step;
   }
-  //console.log(s)
-
   let result = [];
   let pos = start;
 
@@ -42,14 +38,12 @@ const createRange = (start, end, step) => {
     }
   }
   else{
-    //console.log('desc')
     while ( pos >= end ){
       result.push(pos);
       pos -= s;
     }
   }
   return result;
-
 };
 
 /**
@@ -86,24 +80,13 @@ const getScreentimeAlertList = (users, date) => {
   if (date === undefined) throw new Error("date is required");
 
   let userName = [];
-
   for (user of users){
-    //console.log(user);
-
     let arrScreenTime = user.screenTime;
-    //console.log(arrScreenTime)
-
     let media = arrScreenTime.find(x => x.date === date);
-    
-    // object with matching date found 
     if (media !== undefined){
-      
-      // get all the values from teh object : teh usage times and reduce to total 
       let totalUsage = Object.values(media.usage).reduce((total, val) => {
       return total + val }, 0);
 
-      // if total usage is over 100 then add to list  
-      //console.log(totalUsage)
       if (totalUsage>100){
         userName.push(user.username);
       };
@@ -133,7 +116,6 @@ const hexToRGB = hexStr => {
 
       hexStr = `#${r}${r}${g}${g}${b}${b}`
     }
-    // separate the 2 characters for each colour
     const hex_red = hexStr.slice(1,3);
     const hex_green = hexStr.slice(3,5);
     const hex_blue = hexStr.slice(5);
@@ -142,7 +124,6 @@ const hexToRGB = hexStr => {
     rgb_green = parseInt(hex_green , 16);
     rgb_blue = parseInt(hex_blue, 16);
 
-    // invalid hex code return empty string
     if(isNaN(rgb_red) || isNaN(rgb_green) || isNaN(rgb_blue)){
       return '';
     }
@@ -162,21 +143,17 @@ const hexToRGB = hexStr => {
  */ 
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-  // check rows
+
   for (row = 0; row <3; row++){
     if ( board[row][0] ===  "X" && board[row][1] === "X" && board[row][2] === "X" || board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0"){
       return board[row][0];
     }
   }
-
-  // check columns
   for (col = 0; col <3; col++){
     if ( board[0][col] === "X" &&  board[1][col] === "X" && board[2][col] === "X" || board[0][col] === "0" && board[1][col] === "0" && board[2][col] === "0"){
       return board[0][col];
     }
   }
-
-  // check diag.
   if ( board[0][0] === "X" && board[1][1] === "X" && board[2][2] === "X" || board[0][2] === "X" && board[1][1] === "X" && board[2][0] === "X"){
     return "X";
   }

@@ -6,9 +6,7 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // add code here
 
-  // filter multiples of 5 and 3
   let filtered = arr.filter(function(value){
     if ((value % 5 === 0 || value % 3 === 0) && value > 0){
       return value;}
@@ -27,16 +25,13 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  // code here
+
   const splitStr = str.split('');
-  // filter all the non valid sequences
   let notValid = splitStr.filter(function(char){
     if (char !== 'C' && char !== 'G' && char !== 'T' && char !== 'A'){
       return char ;}
   });
-  // if sequence is valid, notValid should be empty
   return notValid.length === 0;
-
 };
 
 /**
@@ -49,7 +44,6 @@ const getComplementaryDNA = str => {
 
   str = str.toUpperCase();
   const strArr = str.split('');
-  //console.log(strArr);
 
   const dnaMap = {
     'T': 'A',
@@ -57,13 +51,10 @@ const getComplementaryDNA = str => {
     'G': 'C',
     'C': 'G',
   }
-
   const newDna = strArr.map(x => {
     return dnaMap[x]});
-  //console.log(newDnaString);
   return  newDnaString =  newDna.reduce(function( s, char) {
       return s += char;}, '');
-
 };
 
 /**
@@ -101,13 +92,11 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  // code here
+
   let matrix =[];
-  
   if (n<1){
     return matrix;
   }
-
   for (j=0; j<n; j++){
 
     let m = [];
@@ -134,13 +123,12 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  //code
+
   day = day.toLowerCase();
   let count = 0;
   for (person of staff){
     let days = person.rota.map(function(r){ return r.toLowerCase(); })
-    //console.log(days);
-    //console.log(day);
+
     if(days.includes( day)){
       count += 1;
     }
