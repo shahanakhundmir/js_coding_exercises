@@ -57,7 +57,7 @@ function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
 
   let reversedWords =[]
-  for (word of words){
+  for (let word of words){
     let reversed ='';
     for (let i = word.length -1; i>=0; i--){
       reversed += word[i];
@@ -71,7 +71,7 @@ function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   
   let total = 0;
-  for (user of users){
+  for (let user of users){
     if(user.type === 'Linux'){
       total += 1;
     }

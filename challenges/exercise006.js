@@ -53,7 +53,7 @@ const getComplementaryDNA = str => {
   }
   const newDna = strArr.map(x => {
     return dnaMap[x]});
-  return  newDnaString =  newDna.reduce(function( s, char) {
+  return  newDna.reduce(function( s, char) {
       return s += char;}, '');
 };
 
@@ -70,7 +70,7 @@ const isItPrime = n => {
 
   let sqrt = Math.sqrt(n);
   
-  for (var i = 2; i <= sqrt; i++) {
+  for (let i = 2; i <= sqrt; i++) {
     if (n % i === 0){
       return false;
     } 
@@ -97,10 +97,10 @@ const createMatrix = (n, fill) => {
   if (n<1){
     return matrix;
   }
-  for (j=0; j<n; j++){
+  for (let j=0; j<n; j++){
 
     let m = [];
-    for(i=0; i<n; i++){
+    for(let i=0; i<n; i++){
       m.push(fill)
     }
     matrix.push(m);
@@ -126,7 +126,7 @@ const areWeCovered = (staff, day) => {
 
   day = day.toLowerCase();
   let count = 0;
-  for (person of staff){
+  for (let person of staff){
     let days = person.rota.map(function(r){ return r.toLowerCase(); })
 
     if(days.includes( day)){

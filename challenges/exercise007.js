@@ -31,7 +31,6 @@ const createRange = (start, end, step) => {
   let pos = start;
 
   if (pos <= end){
-    //console.log('ascend')
     while ( pos <= end ){
       result.push(pos);
       pos += s;
@@ -80,7 +79,7 @@ const getScreentimeAlertList = (users, date) => {
   if (date === undefined) throw new Error("date is required");
 
   let userName = [];
-  for (user of users){
+  for ( let user of users){
     let arrScreenTime = user.screenTime;
     let media = arrScreenTime.find(x => x.date === date);
     if (media !== undefined){
@@ -89,11 +88,11 @@ const getScreentimeAlertList = (users, date) => {
 
       if (totalUsage>100){
         userName.push(user.username);
-      };
+      }
     }
-  };
+  }
   return userName;
-};
+}
 
 /**
  * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
@@ -120,15 +119,15 @@ const hexToRGB = hexStr => {
     const hex_green = hexStr.slice(3,5);
     const hex_blue = hexStr.slice(5);
 
-    rgb_red = parseInt(hex_red, 16);
-    rgb_green = parseInt(hex_green , 16);
-    rgb_blue = parseInt(hex_blue, 16);
+    const rgb_red = parseInt(hex_red, 16);
+    const rgb_green = parseInt(hex_green , 16);
+    const rgb_blue = parseInt(hex_blue, 16);
 
     if(isNaN(rgb_red) || isNaN(rgb_green) || isNaN(rgb_blue)){
       return '';
     }
     const rgbString = `rgb(${rgb_red},${rgb_green},${rgb_blue})`;
-  return rgbString
+  return rgbString;
 };
 
 /**
@@ -144,12 +143,12 @@ const hexToRGB = hexStr => {
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
-  for (row = 0; row <3; row++){
+  for (let row = 0; row <3; row++){
     if ( board[row][0] ===  "X" && board[row][1] === "X" && board[row][2] === "X" || board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0"){
       return board[row][0];
     }
   }
-  for (col = 0; col <3; col++){
+  for (let col = 0; col <3; col++){
     if ( board[0][col] === "X" &&  board[1][col] === "X" && board[2][col] === "X" || board[0][col] === "0" && board[1][col] === "0" && board[2][col] === "0"){
       return board[0][col];
     }

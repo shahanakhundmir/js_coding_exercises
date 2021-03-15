@@ -18,7 +18,7 @@ const count1sand0s = str => {
   const zeros = strArr.filter( n=> n === '0');
   const ones = strArr.filter( n=> n === '1');
 
-  result = {
+  const result = {
   0 : zeros.length,
   1 : ones.length
    };
@@ -28,7 +28,7 @@ const count1sand0s = str => {
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
 
-  sn = n.toString().split('')
+  let sn = n.toString().split('')
   let reversed = '';
   if (sn.length === 1 ){
     return n;
@@ -45,7 +45,7 @@ const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
 
   let total = 0;
-  for (arr of arrs){
+  for (let arr of arrs){
       const subtotal = arr.reduce((a, b) => a + b, 0);
       total += subtotal;
   }
@@ -55,7 +55,6 @@ const sumArrays = arrs => {
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
 
-  let x = [];
   if (arr.length < 2){
     return arr;
   }
@@ -79,7 +78,7 @@ const findNeedle = (haystack, searchTerm) => {
 
   const values = Object.values(haystack);
   
-  for (value of values){
+  for (let value of values){
     if ( typeof(value) === 'string' && value.toLowerCase().includes(searchTerm.toLowerCase())){
         return true;
       }
@@ -92,11 +91,11 @@ const getWordFrequencies = str => {
   
   let uniqueWords = {};
   // remove punctuation, change to lower case and split into array elements
-  strArr = str.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").toLowerCase().split(' ');
+  let strArr = str.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").toLowerCase().split(' ');
 
   let unique = new Set(strArr);
 
-  for (word of unique){
+  for (let word of unique){
     let len = strArr.filter(function(value){
       return value === word; 
     }).length     
