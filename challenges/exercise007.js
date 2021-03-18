@@ -6,9 +6,10 @@ const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
   if (n < 0) throw new Error("n must be above zero");
   const nArr = n.toString().split('');
-  let newNum =  nArr.reduce(function( total, num) {
-    return total + parseInt(num);}, 0);
-    return newNum;
+  let newNum = nArr.reduce(function (total, num) {
+    return total + parseInt(num);
+  }, 0);
+  return newNum;
 };
 
 /**
@@ -24,20 +25,20 @@ const createRange = (start, end, step) => {
   if (end === undefined) throw new Error("end is required");
 
   let s = 1;
-  if (step !== undefined){
+  if (step !== undefined) {
     s = step;
   }
   let result = [];
   let pos = start;
 
-  if (pos <= end){
-    while ( pos <= end ){
+  if (pos <= end) {
+    while (pos <= end) {
       result.push(pos);
       pos += s;
     }
   }
-  else{
-    while ( pos >= end ){
+  else {
+    while (pos >= end) {
       result.push(pos);
       pos -= s;
     }
@@ -79,14 +80,15 @@ const getScreentimeAlertList = (users, date) => {
   if (date === undefined) throw new Error("date is required");
 
   let userName = [];
-  for ( let user of users){
+  for (let user of users) {
     let arrScreenTime = user.screenTime;
     let media = arrScreenTime.find(x => x.date === date);
-    if (media !== undefined){
+    if (media !== undefined) {
       let totalUsage = Object.values(media.usage).reduce((total, val) => {
-      return total + val }, 0);
+        return total + val
+      }, 0);
 
-      if (totalUsage>100){
+      if (totalUsage > 100) {
         userName.push(user.username);
       }
     }
@@ -105,28 +107,28 @@ const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 const hexToRGB = hexStr => {
-    if (hexStr === undefined) throw new Error("hexStr is required");
+  if (hexStr === undefined) throw new Error("hexStr is required");
 
-    if (hexStr.length === 4){
-      
-      const r = hexStr.slice(1,2);
-      const g = hexStr.slice(2,3);
-      const b =  hexStr.slice(3);
+  if (hexStr.length === 4) {
 
-      hexStr = `#${r}${r}${g}${g}${b}${b}`
-    }
-    const hex_red = hexStr.slice(1,3);
-    const hex_green = hexStr.slice(3,5);
-    const hex_blue = hexStr.slice(5);
+    const r = hexStr.slice(1, 2);
+    const g = hexStr.slice(2, 3);
+    const b = hexStr.slice(3);
 
-    const rgb_red = parseInt(hex_red, 16);
-    const rgb_green = parseInt(hex_green , 16);
-    const rgb_blue = parseInt(hex_blue, 16);
+    hexStr = `#${r}${r}${g}${g}${b}${b}`
+  }
+  const hex_red = hexStr.slice(1, 3);
+  const hex_green = hexStr.slice(3, 5);
+  const hex_blue = hexStr.slice(5);
 
-    if(isNaN(rgb_red) || isNaN(rgb_green) || isNaN(rgb_blue)){
-      return '';
-    }
-    const rgbString = `rgb(${rgb_red},${rgb_green},${rgb_blue})`;
+  const rgb_red = parseInt(hex_red, 16);
+  const rgb_green = parseInt(hex_green, 16);
+  const rgb_blue = parseInt(hex_blue, 16);
+
+  if (isNaN(rgb_red) || isNaN(rgb_green) || isNaN(rgb_blue)) {
+    return '';
+  }
+  const rgbString = `rgb(${rgb_red},${rgb_green},${rgb_blue})`;
   return rgbString;
 };
 
@@ -139,26 +141,26 @@ const hexToRGB = hexStr => {
  * ]
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
- */ 
+ */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
-  for (let row = 0; row <3; row++){
-    if ( board[row][0] ===  "X" && board[row][1] === "X" && board[row][2] === "X" || board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0"){
+  for (let row = 0; row < 3; row++) {
+    if (board[row][0] === "X" && board[row][1] === "X" && board[row][2] === "X" || board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0") {
       return board[row][0];
     }
   }
-  for (let col = 0; col <3; col++){
-    if ( board[0][col] === "X" &&  board[1][col] === "X" && board[2][col] === "X" || board[0][col] === "0" && board[1][col] === "0" && board[2][col] === "0"){
+  for (let col = 0; col < 3; col++) {
+    if (board[0][col] === "X" && board[1][col] === "X" && board[2][col] === "X" || board[0][col] === "0" && board[1][col] === "0" && board[2][col] === "0") {
       return board[0][col];
     }
   }
-  if ( board[0][0] === "X" && board[1][1] === "X" && board[2][2] === "X" || board[0][2] === "X" && board[1][1] === "X" && board[2][0] === "X"){
+  if (board[0][0] === "X" && board[1][1] === "X" && board[2][2] === "X" || board[0][2] === "X" && board[1][1] === "X" && board[2][0] === "X") {
     return "X";
   }
-  else if (board[0][0] === "0" && board[1][1] === "0" && board[2][2] === "0" || board[0][2] === "0" && board[1][1] === "0" && board[2][0] === "0"){
+  else if (board[0][0] === "0" && board[1][1] === "0" && board[2][2] === "0" || board[0][2] === "0" && board[1][1] === "0" && board[2][0] === "0") {
     return "0";
-  } 
+  }
   return null;
 };
 

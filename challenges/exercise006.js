@@ -7,13 +7,15 @@
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
 
-  let filtered = arr.filter(function(value){
-    if ((value % 5 === 0 || value % 3 === 0) && value > 0){
-      return value;}
+  let filtered = arr.filter(function (value) {
+    if ((value % 5 === 0 || value % 3 === 0) && value > 0) {
+      return value;
+    }
   });
-  
+
   const total = filtered.reduce((total, val) => {
-    return total + val }, 0)
+    return total + val
+  }, 0)
 
   return total;
 };
@@ -27,9 +29,10 @@ const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
 
   const splitStr = str.split('');
-  let notValid = splitStr.filter(function(char){
-    if (char !== 'C' && char !== 'G' && char !== 'T' && char !== 'A'){
-      return char ;}
+  let notValid = splitStr.filter(function (char) {
+    if (char !== 'C' && char !== 'G' && char !== 'T' && char !== 'A') {
+      return char;
+    }
   });
   return notValid.length === 0;
 };
@@ -52,9 +55,11 @@ const getComplementaryDNA = str => {
     'C': 'G',
   }
   const newDna = strArr.map(x => {
-    return dnaMap[x]});
-  return  newDna.reduce(function( s, char) {
-      return s += char;}, '');
+    return dnaMap[x]
+  });
+  return newDna.reduce(function (s, char) {
+    return s += char;
+  }, '');
 };
 
 /**
@@ -64,16 +69,16 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
-  if (n <2){
+  if (n < 2) {
     return false;
   }
 
   let sqrt = Math.sqrt(n);
-  
+
   for (let i = 2; i <= sqrt; i++) {
-    if (n % i === 0){
+    if (n % i === 0) {
       return false;
-    } 
+    }
   }
   return true;
 };
@@ -93,14 +98,14 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
 
-  let matrix =[];
-  if (n<1){
+  let matrix = [];
+  if (n < 1) {
     return matrix;
   }
-  for (let j=0; j<n; j++){
+  for (let j = 0; j < n; j++) {
 
     let m = [];
-    for(let i=0; i<n; i++){
+    for (let i = 0; i < n; i++) {
       m.push(fill)
     }
     matrix.push(m);
@@ -126,10 +131,10 @@ const areWeCovered = (staff, day) => {
 
   day = day.toLowerCase();
   let count = 0;
-  for (let person of staff){
-    let days = person.rota.map(function(r){ return r.toLowerCase(); })
+  for (let person of staff) {
+    let days = person.rota.map(function (r) { return r.toLowerCase(); })
 
-    if(days.includes( day)){
+    if (days.includes(day)) {
       count += 1;
     }
   }
